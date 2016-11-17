@@ -1,0 +1,24 @@
+<div>
+    <span>
+        <h2>Welcome to Edudat</h2>
+    </span>
+    <span>
+        <h3>Tell us about yourself!</h1>
+        <button>Student</button>
+        <button>Teacher</button>
+        <button>Government Official</button>
+    </span>
+</div>
+
+<br>
+<%= form_tag('/splash/search') do %>
+    <%= label_tag(:district, "District:") %>
+    <%= text_field_tag(:district) %>
+    <br>
+    <%= label_tag(:school, "School:") %>
+    <%= text_field_tag(:school) %>
+    <br>
+    <%= submit_tag "Submit"%>
+<% end %>
+
+<%= link_to "Advanced Search", advanced_search_path %>

@@ -1,0 +1,31 @@
+<div>
+    <span>
+        <h2>Advanced Search</h2>
+    </span>
+    <span>
+        <%= form_tag('/splash/search') do %>
+            <%= label_tag(:district, "District:") %>
+            <%= text_field_tag(:district) %>
+            <br>
+            <%= label_tag(:school, "School:") %>
+            <%= text_field_tag(:school) %>
+            <br>
+            <%= label_tag(:state, "State:") %>
+            <%= text_field_tag(:state) %>
+            <br>
+            <%= label_tag(:city, "City:") %>
+            <%= text_field_tag(:city) %>
+            <br>
+            <%= label_tag(:teacher_salary, "Teacher salary:") %>
+            <%= text_field_tag(:teacher_salary) %>
+            <br>
+            <%= label_tag(:st_ratio, "Student teacher ratio:") %>
+            <%= text_field_tag(:st_ratio) %>
+            <br>
+            <%= label_tag(:p_minority, "Percentage minority:") %>
+            <%= text_field_tag(:p_minority) %>
+            <br>
+            <%= submit_tag "Submit"%>
+        <% end %>
+    </span>
+</div>
