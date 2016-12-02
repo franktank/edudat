@@ -4,11 +4,11 @@ class SplashController < ApplicationController
                          FROM state"
         @states = ActiveRecord::Base.connection.exec_query(query_all_state)
     end
-    
+
     def search
         redirect_to listings_path
     end
-    
+
     def advanced_query
         redirect_to listings_path
     end
