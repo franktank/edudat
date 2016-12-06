@@ -1,24 +1,46 @@
+# Edudat
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+This was built for UF CIS4301
+This application is connected to UF's CISE Oracle
+
+To connect do the following:
+Download corresponding Oracle Instant Client files for Basic Client, SDK, and SQLPlus
+http://www.oracle.com/technetwork/topics/linux-amd64-093390.html
+
+Make directory /opt/oracle
+     By doing cd /opt
+              mkdir oracle
+
+Unzip the downloaded files into /opt/oracle
+unzip /home/user/Downloads/instantclient-sql...
+unzip /home/user/Downloads/instantclient-sdk...
+unzip /home/user/Downloads/instantclient-basic…
+ln -s libclntsh.so.12.1 libclntsh.so
+ln -s libocci.so.12.1 libocci.so
+
+Then inside /opt/oracle/instantclient...
+
+Run:
+export ORACLE_HOME=$(pwd)
+export LD_LIBRARY_PATH=$(pwd)
+
+Use the following gem:
+https://github.com/rsim/oracle-enhanced 
+
+How to execute the SQL commands:
+http://api.rubyonrails.org/classes/ActiveRecord/Result.html
 
 
-Welcome to your Rails project on Cloud9 IDE!
+Finally, change database.yml to have
 
-To get started, just do the following:
+default: &default
+ adapter: oracle_enhanced
+ database: orcl
+ host: oracle.cise.ufl.edu
+ username: ?
+ password: ?
+ port: 1521
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://cis4301-project-franktank.c9users.io/).
 
-Happy coding!
-The Cloud9 IDE team
-
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+The following functionality is complete:
+- [x] 
