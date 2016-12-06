@@ -43,4 +43,4 @@ default: &default
 
 ## Functionality
 The following functionality is complete:
-- [x] 
+
