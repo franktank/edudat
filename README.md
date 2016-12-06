@@ -1,7 +1,7 @@
 # Edudat
 
-This was built for UF CIS4301
-This application is connected to UF's CISE Oracle
+This was built for UF CIS4301 <br>
+This application is connected to UF's CISE Oracle <br>
 
 To connect, do the following:
 ## Download corresponding Oracle Instant Client files for Basic Client, SDK, and SQLPlus
@@ -11,18 +11,18 @@ http://www.oracle.com/technetwork/topics/linux-amd64-093390.html
      cd /opt
      mkdir oracle
 
-Unzip the downloaded files into /opt/oracle
-unzip /home/user/Downloads/instantclient-sql...
-unzip /home/user/Downloads/instantclient-sdk...
-unzip /home/user/Downloads/instantclient-basic…
-ln -s libclntsh.so.12.1 libclntsh.so
-ln -s libocci.so.12.1 libocci.so
+Unzip the downloaded files into /opt/oracle <br>
+unzip /home/user/Downloads/instantclient-sql... <br>
+unzip /home/user/Downloads/instantclient-sdk... <br>
+unzip /home/user/Downloads/instantclient-basic… <br>
+ln -s libclntsh.so.12.1 libclntsh.so <br>
+ln -s libocci.so.12.1 libocci.so <br>
 
 ## Then inside /opt/oracle/instantclient...
 
 ## Run:
-export ORACLE_HOME=$(pwd)
-export LD_LIBRARY_PATH=$(pwd)
+export ORACLE_HOME=$(pwd) <br>
+export LD_LIBRARY_PATH=$(pwd) <br>
 
 ## Use the following gem:
 https://github.com/rsim/oracle-enhanced 
@@ -33,13 +33,13 @@ http://api.rubyonrails.org/classes/ActiveRecord/Result.html
 
 ## Finally, change database.yml to have
 
-default: &default
- adapter: oracle_enhanced
- database: orcl
- host: oracle.cise.ufl.edu
- username: ?
- password: ?
- port: 1521
+default: &default <br>
+ adapter: oracle_enhanced <br>
+ database: orcl <br>
+ host: oracle.cise.ufl.edu <br>
+ username: ? <br>
+ password: ? <br>
+ port: 1521 <br>
 
 ## Functionality
 The following functionality is complete:
