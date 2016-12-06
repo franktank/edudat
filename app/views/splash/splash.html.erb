@@ -11,14 +11,44 @@
 </div>
 
 <br>
-<%= form_tag('/splash/search') do %>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>State Name</th>
+            </tr>
+        </thead>
+
+        <tbody>
+          <%- if @states.count > 0 %>
+            <%- @states.each do |state| %>
+              <tr>
+                <td> <%= state['state_name'] %> </td>
+              </tr>
+            <%- end %>
+          <%- else %>
+            <tr>No Data</tr>
+          <%- end  %>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<br>
+<%= form_tag(root_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "State" %>
+    <br>
     <%= label_tag(:district, "District:") %>
-    <%= text_field_tag(:district) %>
+    <%= text_field_tag :district, params[:district], placeholder: "District" %>
     <br>
     <%= label_tag(:school, "School:") %>
-    <%= text_field_tag(:school) %>
+    <%= text_field_tag(:school, params[:school], placeholder: "School") %>
     <br>
-    <%= submit_tag "Submit"%>
+    <%= submit_tag "Search" %>
 <% end %>
+
 
 <%= link_to "Advanced Search", advanced_search_path %>
