@@ -13,6 +13,114 @@
 <br>
 
 <div>
+    <h2>Search for number of distinct districts by state</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>State Name</th>
+                <th>Number of Distinct Districts</th>
+            </tr>
+        </thead>
+
+        <tbody>
+          <%- if @ddies %>
+            <%- @ddies.each do |d| %>
+              <tr>
+                <td> <%= d['state_name'] %> </td>
+                <td> <%= d['count_ncesid'] %> </td>
+              </tr>
+            <%- end %>
+          <%- end  %>
+        </tbody>
+    </table>
+</div>
+<br>
+<div>
+<%= form_tag(root_path, :method => "get", id: "search-form") do %>
+    <%= label_tag(:state, "State:") %>
+    <%= text_field_tag :state, params[:state], placeholder: "State" %>
+    <br>
+    <%= submit_tag "Search" %>
+<% end %>
+</div>
+
+
+<div>
+  <h2>Search for schools from hispanic count and school enrollment</h2>
+  <div class="display-table">
+    <table>
+        <thead>
+            <tr>
+                <th>School Name</th>
+                <th>Number of Hispanics</th>
+                <th>Enrollment Number</th>
+            </tr>
+        </thead>
+
+        <tbody>
+          <%- if @counts %>
+            <%- @counts.each do |count| %>
+              <tr>
+                <td> <%= count['s_name'] %> </td>
+                <td> <%= count['hisp'] %> </td>
+                <td> <%= count['s_enroll'] %> </td>
+              </tr>
+            <%- end %>
+          <%- end  %>
+        </tbody>
+    </table>
+  </div>
+  <div class="count-form">
+    <%= form_tag(root_path, :method => "get", id: "search-form") do %>
+        <%= label_tag(:count_hispanic, "Number of Hispanics > ") %>
+        <%= text_field_tag :count_hispanic, params[:count_hispanic], placeholder: "200" %>
+        <br>
+        <%= label_tag(:enrollment, "School Enrollment > ") %>
+        <%= text_field_tag :enrollment, params[:enrollment], placeholder: "4000" %>
+        <br>
+        <%= submit_tag "Search" %>
+    <% end %>
+  </div>
+</div>
+
+
+<div>
+    <h2>Search for average median property tax and average median home value</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>State Name</th>
+                <th>Average Median Property Tax</th>
+                <th>Average Median Home Value</th>
+            </tr>
+        </thead>
+
+        <tbody>
+          <%- if @spi %>
+            <%- @spi.each do |s| %>
+              <tr>
+                <td> <%= s['state_name'] %> </td>
+                <td> <%= s['avg_med_prop_tax'].round(2).to_s %> </td>
+                <td> <%= s['avg_med_home_val'].round(2).to_s %> </td>
+              </tr>
+            <%- end %>
+          <%- end  %>
+        </tbody>
+    </table>
+</div>
+<br>
+<div>
+<%= form_tag(root_path, :method => "get", id: "search-form") do %>
+    <%= label_tag(:state_prop, "State:") %>
+    <%= text_field_tag :state_prop, params[:state_prop], placeholder: "State" %>
+    <br>
+    <%= submit_tag "Search" %>
+<% end %>
+</div>
+<br>
+
+<div>
+    <h2>Search for states from fall enrollment and district revenue</h2>
     <table>
         <thead>
             <tr>
@@ -21,34 +129,65 @@
         </thead>
 
         <tbody>
-          <%- if @states.count > 0 %>
-            <%- @states.each do |state| %>
+          <%- if @sfedr %>
+            <%- @sfedr.each do |s| %>
               <tr>
-                <td> <%= state['state_name'] %> </td>
+                <td> <%= s['state_name'] %> </td>
               </tr>
             <%- end %>
-          <%- else %>
-            <tr>No Data</tr>
           <%- end  %>
         </tbody>
     </table>
 </div>
-
-
-
-
 <br>
+<div>
 <%= form_tag(root_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "State" %>
+    <%= label_tag(:fall_enr, "Fall Enrollment > ") %>
+    <%= text_field_tag :fall_enr, params[:fall_enr], placeholder: "500" %>
     <br>
-    <%= label_tag(:district, "District:") %>
-    <%= text_field_tag :district, params[:district], placeholder: "District" %>
-    <br>
-    <%= label_tag(:school, "School:") %>
-    <%= text_field_tag(:school, params[:school], placeholder: "School") %>
+    <%= label_tag(:dist_rev, "District Revenue < ") %>
+    <%= text_field_tag :dist_rev, params[:dist_rev], placeholder: "5000" %>
     <br>
     <%= submit_tag "Search" %>
 <% end %>
+</div>
+<br>
 
+<div>
+    <h2>Search for spending per pupil</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>State Name</th>
+                <th>County Name</th>
+                <th>District Name</th>
+                <th>Total Spending per Pupil</th>
+            </tr>
+        </thead>
+
+        <tbody>
+          <%- if @spendings %>
+            <%- @spendings.each do |spending| %>
+              <tr>
+                <td> <%= spending['state_name'] %> </td>
+                <td> <%= spending['county_name'] %> </td>
+                <td> <%= spending['name'] %> </td>
+                <td> <%= spending['sum_total_spending'] %> </td>
+              </tr>
+            <%- end %>
+          <%- end  %>
+        </tbody>
+    </table>
+</div>
+<br>
+<div>
+<%= form_tag(root_path, :method => "get", id: "search-form") do %>
+    <%= label_tag(:spending, "Spending > $") %>
+    <%= text_field_tag :spending, params[:spending], placeholder: "15000" %>
+    <br>
+    <%= submit_tag "Search" %>
+<% end %>
+</div>
+<br>
 
 <%= link_to "Advanced Search", advanced_search_path %>
