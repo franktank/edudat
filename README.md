@@ -8,8 +8,8 @@ To connect do the following:
 http://www.oracle.com/technetwork/topics/linux-amd64-093390.html
 
 ## Make directory /opt/oracle
-     By doing cd /opt
-              mkdir oracle
+     cd /opt
+     mkdir oracle
 
 Unzip the downloaded files into /opt/oracle
 unzip /home/user/Downloads/instantclient-sql...
