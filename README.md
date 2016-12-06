@@ -3,7 +3,7 @@
 This was built for UF CIS4301
 This application is connected to UF's CISE Oracle
 
-To connect do the following:
+To connect, do the following:
 ## Download corresponding Oracle Instant Client files for Basic Client, SDK, and SQLPlus
 http://www.oracle.com/technetwork/topics/linux-amd64-093390.html
 
