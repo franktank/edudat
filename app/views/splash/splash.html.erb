@@ -192,4 +192,39 @@
 </div>
 <br>
 
+<div>
+  <h2>Search for schools that are Title I with revenues < 1000 and expenditures > 1000</h2>
+  <div class="display-table">
+    <table>
+        <thead>
+            <tr>
+                <th>School Name</th>
+                <th>State Name</th>
+                <th>City Name</th>
+            </tr>
+        </thead>
+
+        <tbody>
+          <%- if @schools %>
+            <%- @schools.each do |school| %>
+              <tr>
+                <td> <%= school['s_name'] %> </td>
+                <td> <%= school['state_name'] %> </td>
+                <td> <%= school['city'] %> </td>
+              </tr>
+            <%- end %>
+          <%- end  %>
+        </tbody>
+    </table>
+  </div>
+  <div class="count-form">
+    <%= form_tag(root_path, :method => "get", id: "search-form") do %>
+        <%= label_tag(:title1, "Search") %>
+        <%= check_box_tag :title1 %>
+        <br>
+        <%= submit_tag "Search" %>
+    <% end %>
+  </div>
+</div>
+
 <%= link_to "Advanced Search", advanced_search_path %>

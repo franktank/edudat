@@ -97,6 +97,41 @@ class SplashController < ApplicationController
           @spendings = ActiveRecord::Base.connection.exec_query(spending_pupil)
           @spendings.to_hash
         end
+
+        if params[:title1] != nil
+          title = if params[:title] == 1
+            'Yes'
+          else
+            'No'
+          end
+          title1 = "SELECT DISTINCT SCHOOL.S_NAME,
+                    STATE.STATE_NAME,
+                    ZIP_CODE.CITY
+                    FROM STATE
+                    INNER JOIN ZIP_CODE
+                    ON STATE.STATE_NUMBER = ZIP_CODE.STATE_NUMBER
+                    INNER JOIN SCHL_ADDRESS
+                    ON ZIP_CODE.ZIP = SCHL_ADDRESS.ZIP
+                    INNER JOIN SCHOOL
+                    ON SCHOOL.U_NCESID = SCHL_ADDRESS.U_NCESID
+                    INNER JOIN SCHL_TYPE
+                    ON SCHOOL.U_NCESID = SCHL_TYPE.U_NCESID
+                    INNER JOIN SCHL_TITLE1
+                    ON SCHOOL.U_NCESID = SCHL_TITLE1.U_NCESID
+                    INNER JOIN DISTRICT
+                    ON STATE.STATE_NUMBER = DISTRICT.STATENUM
+                    INNER JOIN DISTRICT_REVENUE
+                    ON DISTRICT.NCESID = DISTRICT_REVENUE.NCESID
+                    INNER JOIN DISTRICT_EXPENDITURES
+                    ON DISTRICT.NCESID                 = DISTRICT_EXPENDITURES.NCESID
+                    WHERE DISTRICT_REVENUE.TOTALREV    < 1000
+                    AND SCHL_TITLE1.TITLEI             = '#{title}'
+                    AND SCHL_TYPE.MAGNET               = 'Yes'
+                    AND DISTRICT_EXPENDITURES.TOTALEXP > 1000"
+            @schools = ActiveRecord::Base.connection.exec_query(title1)
+            @schools.to_hash
+            puts @schools
+        end
     end
 
     def advanced_query
