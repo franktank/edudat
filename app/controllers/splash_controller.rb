@@ -1,5 +1,10 @@
 class SplashController < ApplicationController
     def splash
+        count = "select count(*)
+                 from school"
+        @c = ActiveRecord::Base.connection.exec_query(count)
+        @c.to_hash
+        puts @c
         if params[:state]
           distinct_districts_in_each_state = "SELECT STATE.STATE_NAME, COUNT(DISTINCT DISTRICT.NCESID) AS Count_NCESID
                     FROM COUNTY
