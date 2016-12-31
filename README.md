@@ -41,6 +41,21 @@ default: &default <br>
  password: ? <br>
  port: 1521 <br>
 
+## Form
+
+`
+<%= form_tag(root_path, :method => "get", id: "search-form") do %>
+        <%= label_tag(:count_hispanic, "Number of Hispanics > ") %>
+        <%= text_field_tag :count_hispanic, params[:count_hispanic], placeholder: "200" %>
+        <br>
+        <%= label_tag(:enrollment, "School Enrollment > ") %>
+        <%= text_field_tag :enrollment, params[:enrollment], placeholder: "4000" %>
+        <br>
+        <%= submit_tag "Search" %>
+    <% end %>
+`
+
 ## Functionality
 The following functionality is complete:
+
 
